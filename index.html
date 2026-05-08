@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earn Money Bot</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  
+  <script src='//whephiwums.com/sdk.js' data-zone='10980120' data-sdk='show_10980120'></script>
+  
+  <style>
+    body { font-family: Arial; background: #17212b; color: white; text-align: center; padding: 20px; }
+    .card { background: #232e3c; padding: 20px; border-radius: 15px; margin: 10px 0; }
+    .btn { background: #5288c1; color: white; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; margin: 10px; cursor: pointer; }
+    .points { font-size: 24px; color: #6ab2f2; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h1>💰 Earn Money Bot</h1>
+  <div class="card">
+    <div class="points">Points: <span id="points">0</span></div>
+    <button class="btn" onclick="watchAd()">📺 Watch Ad +10 Points</button>
+    <button class="btn" onclick="withdraw()">💸 Withdraw</button>
+  </div>
+
+  <script>
+    let points = 0;
+    function watchAd() {
+      if (typeof show_10980120 === 'function') {
+        show_10980120().then(() => {
+          points += 10;
+          document.getElementById('points').innerText = points;
+          alert('You earned 10 points!');
+        }).catch(e => {
+          alert('Ad failed to load. Try again.');
+        });
+      } else {
+        alert('Ad not ready. Wait 5 minutes after setup.');
+      }
+    }
+    function withdraw() {
+      if (points >= 100) {
+        alert('Withdrawal request for ' + points + ' points sent!');
+        points = 0;
+        document.getElementById('
